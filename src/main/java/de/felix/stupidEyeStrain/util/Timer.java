@@ -11,7 +11,7 @@ import static de.felix.stupidEyeStrain.StupidEyeStrain.openReminderScreen;
 public class Timer {
     private static final Runnable timerRunnable = () -> {
         try {
-            Thread.sleep((long) getConfig().delay * 1000 * 60); // ms -> s -> m
+            Thread.sleep((long) getConfig().cooldown * 1000 * 60); // ms -> s -> m
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -21,7 +21,7 @@ public class Timer {
                 openReminderScreen();
             } else {
                 Minecraft.getInstance().getToastManager().addToast(
-                        SystemToast.multiline(Minecraft.getInstance(), SystemToast.SystemToastId.NARRATOR_TOGGLE, Component.nullToEmpty(getConfig().delay + " minutes have passed"), Component.nullToEmpty("Rest your eyes, look at something far away!"))
+                        SystemToast.multiline(Minecraft.getInstance(), SystemToast.SystemToastId.NARRATOR_TOGGLE, Component.nullToEmpty(getConfig().cooldown + " minutes have passed"), Component.nullToEmpty("Rest your eyes, look at something far away!"))
                 );
 
                 Component startBreakLink = Component.literal(" [Start Break]")
@@ -29,12 +29,10 @@ public class Timer {
                         .withStyle(style -> style.withBold(true))
                         .withColor(13457920);
 
-                Component finalMessage = Component.literal(getConfig().delay + (getConfig().delay == 1 ? "minute" : "minutes") + " have passed.")
+                Component finalMessage = Component.literal(getConfig().cooldown + (getConfig().cooldown == 1 ? "minute" : "minutes") + " have passed.")
                         .append(startBreakLink);
 
-                Minecraft.getInstance().execute(() -> {
-                    Minecraft.getInstance().gui.getChat().addMessage(finalMessage);
-                });
+                Minecraft.getInstance().execute(() -> Minecraft.getInstance().gui.getChat().addMessage(finalMessage));
 
                 startTimer();
             }

@@ -2,7 +2,7 @@
   "text.autoconfig.stupid-eye-strain.title": "Stupid Eye Strain",
 
   "text.autoconfig.stupid-eye-strain.option.enabled": "Enabled",
-  "text.autoconfig.stupid-eye-strain.option.delay": "Delay between notifications (in minutes)",
+  "text.autoconfig.stupid-eye-strain.option.cooldown": "Cooldown between notifications (in minutes)",
   "text.autoconfig.stupid-eye-strain.option.timer": "Timer (in seconds)",
   "text.autoconfig.stupid-eye-strain.option.showToastsInMenus": "Show toasts if you're inside a menu",
   "text.autoconfig.stupid-eye-strain.option.onlyShowToasts": "Only show toasts",

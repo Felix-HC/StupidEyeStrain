@@ -11,7 +11,8 @@ A Minecraft Mod that sends you occasional reminders to take a break and look at 
 `/stupideyestrain config` – Open the configuration screen
 
 ## Demo
-![Demo video showcasing the core features of this mod](./assets/demo.webm)
+
+Video showcasing the core features of this mod: https://youtu.be/3ntSDHnHPzs
 
 ## License
 

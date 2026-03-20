@@ -3,9 +3,13 @@
   "id": "stupid-eye-strain",
   "version": "${version}",
   "name": "Stupid Eye Strain",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "description": "Occasional reminders to take a break and look at something far away to avoid eye strain.",
+  "authors": ["Felix"],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/stupid-eye-strain",
+    "sources": "https://github.com/Felix-HC/StupidEyeStrain",
+    "issues": "https://github.com/Felix-HC/StupidEyeStrain/issues"
+  },
   "license": "MIT",
   "icon": "assets/stupid-eye-strain/icon.png",
   "environment": "client",

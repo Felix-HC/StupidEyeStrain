@@ -12,7 +12,7 @@ A Minecraft Mod that sends you occasional reminders to take a break and look at 
 
 ## Demo
 
-YouTube video showcasing the core features of this mod: https://youtu.be/3ntSDHnHPzs
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zL6e3LJSiMM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## License
 

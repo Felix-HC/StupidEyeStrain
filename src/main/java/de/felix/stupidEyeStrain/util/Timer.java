@@ -21,7 +21,7 @@ public class Timer {
                 openReminderScreen();
             } else {
                 Minecraft.getInstance().getToastManager().addToast(
-                        SystemToast.multiline(Minecraft.getInstance(), SystemToast.SystemToastId.NARRATOR_TOGGLE, Component.nullToEmpty(getConfig().cooldown + " minutes have passed"), Component.nullToEmpty("Rest your eyes, look at something far away!"))
+                        SystemToast.multiline(Minecraft.getInstance(), SystemToast.SystemToastId.NARRATOR_TOGGLE, Component.nullToEmpty(getConfig().cooldown + (getConfig().cooldown == 1 ? " minute has" : " minutes have") + " passed"), Component.nullToEmpty("Rest your eyes, look at something far away!"))
                 );
 
                 Component startBreakLink = Component.literal(" [Start Break]")
@@ -29,7 +29,7 @@ public class Timer {
                         .withStyle(style -> style.withBold(true))
                         .withColor(13457920);
 
-                Component finalMessage = Component.literal(getConfig().cooldown + (getConfig().cooldown == 1 ? "minute" : "minutes") + " have passed.")
+                Component finalMessage = Component.literal(getConfig().cooldown + (getConfig().cooldown == 1 ? " minute has" : " minutes have") + " passed")
                         .append(startBreakLink);
 
                 Minecraft.getInstance().execute(() -> Minecraft.getInstance().gui.getChat().addMessage(finalMessage));

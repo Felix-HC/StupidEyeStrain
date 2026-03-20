@@ -1,6 +1,5 @@
 package de.felix.stupidEyeStrain;
 
-import com.mojang.authlib.minecraft.client.MinecraftClient;
 import de.felix.stupidEyeStrain.command.ModCommands;
 import de.felix.stupidEyeStrain.config.ModConfig;
 import de.felix.stupidEyeStrain.util.Timer;
@@ -9,6 +8,8 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.toasts.SystemToast;
+import net.minecraft.network.chat.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +33,15 @@ public class StupidEyeStrain implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("Initializing " + MOD_ID);
-        AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+        AutoConfig.register(ModConfig.class, GsonConfigSerializer::new)
+                .registerSaveListener((configHolder, modConfig) -> {
+                    Timer.stopTimer();
+                    Timer.startTimer();
+                    Minecraft.getInstance().getToastManager().addToast(
+                            SystemToast.multiline(Minecraft.getInstance(), SystemToast.SystemToastId.NARRATOR_TOGGLE, Component.nullToEmpty("Updated Config"), Component.nullToEmpty("Cooldown has been reset"))
+                    );
+                    return null;
+                });
         CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
         ModCommands.initialize();

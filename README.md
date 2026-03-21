@@ -10,6 +10,8 @@ A Minecraft Mod that sends you occasional reminders to take a break and look at 
 
 `/stupideyestrain config` – Open the configuration screen
 
+`/stupideyestrain enable/disable` – Enable/Disable functionality
+
 ## Demo
 
 YouTube video showcasing the core features of this mod: https://www.youtube.com/watch?v=zL6e3LJSiMM

@@ -7,6 +7,8 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = StupidEyeStrain.MOD_ID)
 public class ModConfig implements ConfigData {
+    public boolean enabled = true;
+
     @ConfigEntry.BoundedDiscrete(min = 1, max = 60)
     public int cooldown = 20;
 

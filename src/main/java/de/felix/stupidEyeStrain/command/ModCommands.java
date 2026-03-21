@@ -18,16 +18,38 @@ public class ModCommands {
                  }));
         });
 
-        ClientCommandRegistrationCallback.EVENT.register(((dispatcher, registryAccess) -> {
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
             dispatcher.register(ClientCommandManager
                     .literal("stupideyestrain")
                     .then(ClientCommandManager.literal("config")
-                    .executes(commandContext -> {
-                        Minecraft.getInstance().schedule(() -> {
-                            Minecraft.getInstance().setScreen(AutoConfigClient.getConfigScreen(ModConfig.class, Minecraft.getInstance().screen).get());
-                        });
-                        return 1;
-                    })));
-        }));
+                        .executes(commandContext -> {
+                            Minecraft.getInstance().schedule(() -> {
+                                Minecraft.getInstance().setScreen(AutoConfigClient.getConfigScreen(ModConfig.class, Minecraft.getInstance().screen).get());
+                            });
+                            return 1;
+                        })));
+        });
+
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            dispatcher.register(ClientCommandManager
+                    .literal("stupideyestrain")
+                    .then(ClientCommandManager.literal("enable")
+                            .executes(commandContext -> {
+                                StupidEyeStrain.getConfig().enabled = true;
+                                StupidEyeStrain.onUpdateConfig();
+                                return 1;
+                            })));
+        });
+
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            dispatcher.register(ClientCommandManager
+                    .literal("stupideyestrain")
+                    .then(ClientCommandManager.literal("disable")
+                            .executes(commandContext -> {
+                                StupidEyeStrain.getConfig().enabled = false;
+                                StupidEyeStrain.onUpdateConfig();
+                                return 1;
+                            })));
+        });
     }
 }
